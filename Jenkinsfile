@@ -1,6 +1,6 @@
 pipeline{
     options {
-        timeout(time: 25, unit: 'SECONDS') 
+        timeout(time: 20, unit: 'SECONDS') 
     }
     agent { docker { image 'maven:3.3.3' } }
     stages {
@@ -11,7 +11,7 @@ pipeline{
         }
         stage("timeout"){
             steps {
-                sleep 10
+                sleep 25
                 echo 'Hello'
             }
         }
