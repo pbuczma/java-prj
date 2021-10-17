@@ -17,10 +17,19 @@ pipeline{
             options {
                 timeout(time: 20, unit: 'SECONDS') 
             }
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+            
             steps {
                 sleep 5
-                echo 'Hello'
-            }
+                echo "Hello ${params.PERSON}"
+            
         }
         stage("last_stage"){
                 steps {
