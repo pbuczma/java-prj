@@ -7,6 +7,8 @@ pipeline{
         stage('build') {
             steps {
                 sh 'mvn --version'
+                sleep 25
+                echo 'Build stage'
             }
         }
         stage("timeout"){
