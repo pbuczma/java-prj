@@ -29,7 +29,7 @@ pipeline{
             steps {
                 sleep 5
                 echo "Hello ${params.PERSON}"
-            
+            }
         }
         stage("last_stage"){
                 steps {
@@ -42,6 +42,3 @@ pipeline{
             }
         }
 }
-
-
-
