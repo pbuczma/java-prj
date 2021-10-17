@@ -19,7 +19,7 @@ pipeline{
         }
         stage("last_stage"){
                 steps {
-                    sleep 15
+                    sleep 25
                     echo 'Hello'
                     sh 'pwd'
                 }
