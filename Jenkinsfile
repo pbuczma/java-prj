@@ -34,6 +34,7 @@ pipeline{
                     sleep 5
                     echo 'Hello'
                     sh 'pwd'
+                    sh "rm -f ${params.CHOICE} || true"
                     sh "mkdir ${params.CHOICE}"
                     sh 'ls -1'
                 }
