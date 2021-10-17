@@ -15,7 +15,7 @@ pipeline{
         }
         stage("after_build"){
             options {
-                timeout(time: 20, unit: 'SECONDS') 
+                timeout(time: 50, unit: 'SECONDS') 
             }
             input {
                 message "Should we continue?"
