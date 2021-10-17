@@ -9,7 +9,6 @@ pipeline{
         stage('build') {
             steps {
                 sh 'mvn --version'
-                sleep 5
                 echo "Hello ${params.PERSON}"
             }
         }
@@ -27,8 +26,7 @@ pipeline{
             }
             
             steps {
-                sleep 5
-                echo "Hello ${params.PERSON}"
+                 echo "Hello ${params.PERSON}"
             }
         }
         stage("last_stage"){
