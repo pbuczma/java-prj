@@ -7,9 +7,11 @@ pipeline {
             }
         }
         stage("timeout"){
-            steps {
-                sleep 10
-                echo 'Hello'
+            timeout(unit: 'SECONDS', time: 5) {
+                steps {
+                    sleep 10
+                    echo 'Hello'
+                }
             }
         }
     }
