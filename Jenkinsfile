@@ -6,12 +6,12 @@ pipeline {
                 sh 'mvn --version'
             }
         }
-    }
-    timeout(unit: 'SECONDS', time: 5) {
-        stage("timeout"){
-            node {
-                sleep 10
-                echo 'Hello'
+        timeout(unit: 'SECONDS', time: 5) {
+            stage("timeout"){
+                node {
+                    sleep 10
+                    echo 'Hello'
+                }
             }
         }
     }
