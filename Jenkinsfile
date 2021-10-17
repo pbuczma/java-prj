@@ -7,4 +7,12 @@ pipeline {
             }
         }
     }
+    timeout(unit: 'SECONDS', time: 5) {
+        stage("timeout"){
+            node {
+                sleep 10
+                echo 'Hello'
+            }
+        }
+    }
 }
