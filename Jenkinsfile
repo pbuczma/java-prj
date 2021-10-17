@@ -10,7 +10,7 @@ pipeline{
             steps {
                 sh 'mvn --version'
                 sleep 5
-                echo 'Choice: ${params.PERSON}'
+                echo "Hello ${params.PERSON}"
             }
         }
         stage("after_build"){
@@ -27,7 +27,7 @@ pipeline{
                     sleep 5
                     echo 'Hello'
                     sh 'pwd'
-                    sh 'mkdir ${params.CHOICE}'
+                    sh "mkdir ${params.CHOICE}"
                     sh 'ls -1'
                 }
             }
