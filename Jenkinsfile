@@ -7,7 +7,7 @@ pipeline {
             }
         }
         stage("timeout"){
-            node {
+            steps {
                 sleep 10
                 echo 'Hello'
             }
