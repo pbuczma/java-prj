@@ -9,9 +9,9 @@ pipeline{
                 sh 'mvn --version'
             }
         }
-        stage("timeout"){
+        stage("tolong"){
             steps {
-                sleep 10
+                sleep 15
                 echo 'Hello'
             }
         }
