@@ -9,7 +9,7 @@ pipeline{
         stage('build') {
             steps {
                 sh 'mvn --version'
-                sleep 25
+                sleep 5
                 echo 'Choice: ${params.PERSON}'
             }
         }
@@ -18,13 +18,13 @@ pipeline{
                 timeout(time: 20, unit: 'SECONDS') 
             }
             steps {
-                sleep 15
+                sleep 5
                 echo 'Hello'
             }
         }
         stage("last_stage"){
                 steps {
-                    sleep 25
+                    sleep 5
                     echo 'Hello'
                     sh 'pwd'
                     sh 'mkdir ${params.CHOICE}'
