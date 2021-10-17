@@ -21,7 +21,7 @@ pipeline{
                 steps {
                     sleep 15
                     echo 'Hello'
-            pwd
+                    sh 'pwd'
                 }
             }
         }
