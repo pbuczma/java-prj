@@ -7,14 +7,24 @@ pipeline{
     
     stages {
         stage('build') {
-            agent { docker { image 'maven:3.3.3' } }
+            agent { 
+                docker { 
+                    image 'maven:3.3.3'
+                    label 'mmaven-label'
+                } 
+            }  
             steps {
                 sh 'mvn --version'
                 echo "Hello ${params.PERSON}"
             }
         }
         stage("after_build"){
-            agent { docker { image 'alpine' } }
+            agent { 
+                docker { 
+                    image 'alpine'
+                    label 'mmaven-label'
+                } 
+            }
             options {
                 timeout(time: 50, unit: 'SECONDS') 
             }
@@ -26,7 +36,12 @@ pipeline{
             }
         }
         stage("last_stage"){
-             agent { docker { image 'alpine' } }
+             agent { 
+                 docker { 
+                     image 'alpine' 
+                     label 'alpine-label'
+                 } 
+             }
                 steps {
                     sleep 5
                     echo 'Hello'
