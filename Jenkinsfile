@@ -10,7 +10,7 @@ pipeline{
             agent { 
                 docker { 
                     image 'maven:3.3.3'
-                    label 'maven-label'
+                    // label 'maven-label'
                 } 
             }  
             steps {
