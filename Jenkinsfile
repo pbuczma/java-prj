@@ -34,7 +34,8 @@ pipeline{
                 sh 'rm -f file.txt || true'
                 sh 'touch file.txt'
                 stash includes: 'file.txt', name: 'file' 
-                sh 'echo "credentils ${SSH_CREDS}"'
+                sh 'echo "credentils ${SSH_CREDS}" > cred.txt'
+                sh 'cat cred.txt'
                 echo "Hello ${params.PERSON}"
             }
         }
