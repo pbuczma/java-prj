@@ -16,7 +16,7 @@ pipeline{
             options {
                 timeout(time: 50, unit: 'SECONDS') 
             }
-            rm -f file.txt || touch file.txt
+            sh 'rm -f file.txt || touch file.txt'
             stash includes: 'file.txt', name: 'file' 
             
             steps {
