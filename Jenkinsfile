@@ -17,7 +17,8 @@ pipeline{
                 timeout(time: 50, unit: 'SECONDS') 
             }
             steps {
-                sh 'rm -f file.txt || touch file.txt'
+                sh 'rm -f file.txt || true'
+                sh 'touch file.txt'
                 stash includes: 'file.txt', name: 'file' 
                 echo "Hello ${params.PERSON}"
             }
