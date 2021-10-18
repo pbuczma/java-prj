@@ -1,5 +1,5 @@
 pipeline{
-    agent { docker { image 'maven:3.3.3' } }
+    agent none
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
@@ -7,12 +7,14 @@ pipeline{
     
     stages {
         stage('build') {
+            agent { docker { image 'maven:3.3.3' } }
             steps {
                 sh 'mvn --version'
                 echo "Hello ${params.PERSON}"
             }
         }
         stage("after_build"){
+            agent { docker { image 'alpine' } }
             options {
                 timeout(time: 50, unit: 'SECONDS') 
             }
