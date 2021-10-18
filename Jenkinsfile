@@ -10,7 +10,7 @@ pipeline{
             agent { 
                 docker { 
                     image 'maven:3.3.3'
-                    label 'mmaven-label'
+                    label 'maven-label'
                 } 
             }  
             steps {
@@ -22,7 +22,7 @@ pipeline{
             agent { 
                 docker { 
                     image 'alpine'
-                    label 'mmaven-label'
+                    label 'maven-label'
                 } 
             }
             options {
