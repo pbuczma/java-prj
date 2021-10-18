@@ -16,11 +16,10 @@ pipeline{
             options {
                 timeout(time: 50, unit: 'SECONDS') 
             }
-            sh 'rm -f file.txt || touch file.txt'
-            stash includes: 'file.txt', name: 'file' 
-            
             steps {
-                 echo "Hello ${params.PERSON}"
+                sh 'rm -f file.txt || touch file.txt'
+                stash includes: 'file.txt', name: 'file' 
+                echo "Hello ${params.PERSON}"
             }
         }
         stage("last_stage"){
