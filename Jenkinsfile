@@ -16,23 +16,19 @@ pipeline{
             options {
                 timeout(time: 50, unit: 'SECONDS') 
             }
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
-            }
+            rm -f file.txt || touch file.txt
+            stash includes: 'file.txt', name: 'file' 
             
             steps {
                  echo "Hello ${params.PERSON}"
             }
         }
         stage("last_stage"){
+             agent { docker { image 'alpine' } }
                 steps {
                     sleep 5
                     echo 'Hello'
+                    unstash 'file'
                     sh 'pwd'
                     sh "rm -rf ${params.CHOICE} || true"
                     sh "mkdir ${params.CHOICE}"
