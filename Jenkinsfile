@@ -22,8 +22,10 @@ pipeline{
             agent { 
                 docker { 
                     image 'alpine'
-                    label 'maven-label'
                 } 
+            }
+            environment {
+                SSH_CREDS = credentials('pbuczma-github')
             }
             options {
                 timeout(time: 50, unit: 'SECONDS') 
@@ -32,6 +34,7 @@ pipeline{
                 sh 'rm -f file.txt || true'
                 sh 'touch file.txt'
                 stash includes: 'file.txt', name: 'file' 
+                sh 'echo "credentils ${SSH_CREDS}"'
                 echo "Hello ${params.PERSON}"
             }
         }
@@ -39,7 +42,6 @@ pipeline{
              agent { 
                  docker { 
                      image 'alpine' 
-                     label 'alpine-label'
                  } 
              }
                 steps {
